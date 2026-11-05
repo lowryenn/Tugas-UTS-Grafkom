@@ -63,13 +63,39 @@ lib.background({r:255,g:255,b:255});
 //     snake.drawSnake(GrafLib, ukuranKotak);
 // }
 
+let ukuranKotak = 40;
+// Posisi awal snake
+let dx = 1;
+let dy = 0;
+
+
+document.getElementById("btn-atas").addEventListener("click", function() {
+    dx = 0;
+    dy = -1;
+});
+
+document.getElementById("btn-bawah").addEventListener("click", function() {
+    dx = 0;
+    dy = 1;
+});
+
+document.getElementById("btn-kiri").addEventListener("click", function() {
+    dx = -1;
+    dy = 0;
+});
+
+document.getElementById("btn-kanan").addEventListener("click", function() {
+    dx = 1;
+    dy = 0;
+});
+
+// Pergerakan ular
 setInterval(() => {
-    let ukuranKotak = 40
-    snake.moveSnake(1, 0);
-    snake.drawSnake(lib, ukuranKotak);
+    // clear prev image
+    lib.background({r : 255, g : 255, b : 255});
+    snake.moveSnake(dx, dy);
+    // redraw snake (dx, dy) is used to determine the direction of the snake's head for drawing the eyes correctly
+    snake.drawSnake(lib, ukuranKotak, dx, dy);
+
     context.putImageData(lib.image_data, 0, 0);
-}, 150);
-
-// setInterval.addEventlistener("click")
-
-context.putImageData(image_data,0,0);
+}, 250); // 250 (interval ms) = 0,25 detik
