@@ -81,8 +81,7 @@ function mulaiLagi() {
 function gambarSemua() {
     lib.background({ r: 255, g: 255, b: 255 });
     if (status !== "menang") apple.drawApple(lib, ukuranKotak);
-    // (dx, dy) is used to determine the direction of the snake's head for drawing the eyes correctly
-    snake.drawSnake(lib, ukuranKotak, dx, dy);
+    snake.drawSnake(lib, ukuranKotak, dx, dy);   // (dx, dy) is used to determine the direction of the snake's head for drawing the eyes correctly
 
     context.putImageData(lib.image_data, 0, 0);
 
