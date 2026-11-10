@@ -9,12 +9,6 @@ const image_data = context.createImageData(canvas_handler.width, canvas_handler.
 let lib = new GrafLib(canvas_handler.width, canvas_handler.height, image_data);
 let snake = new Snake(5, 5)
 
-let array_titik = [
-    { x: 100, y: 100 },
-    { x: 100, y: 200 },
-    { x: 200, y: 100 }
-]
-
 lib.background({ r: 255, g: 255, b: 255 });
 
 let ukuranKotak = 40;
