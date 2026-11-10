@@ -7,15 +7,15 @@ let context = canvas_handler.getContext("2d");
 const image_data = context.createImageData(canvas_handler.width, canvas_handler.height);
 
 let lib = new GrafLib(canvas_handler.width, canvas_handler.height, image_data);
-let snake = new Snake(5,5)
+let snake = new Snake(5, 5)
 
 let array_titik = [
-    {x: 100, y: 100},
-    {x: 100, y: 200},
-    {x: 200, y: 100}
+    { x: 100, y: 100 },
+    { x: 100, y: 200 },
+    { x: 200, y: 100 }
 ]
 
-lib.background({r:255,g:255,b:255});
+lib.background({ r: 255, g: 255, b: 255 });
 
 let ukuranKotak = 40;
 let kolom = canvas_handler.width / ukuranKotak;
@@ -41,24 +41,24 @@ function ubahArah(x, y) {
     dyBaru = y;
 }
 
-document.getElementById("btn-atas").addEventListener("click", function() {
+document.getElementById("btn-atas").addEventListener("click", function () {
     ubahArah(0, -1);
 });
 
-document.getElementById("btn-bawah").addEventListener("click", function() {
+document.getElementById("btn-bawah").addEventListener("click", function () {
     ubahArah(0, 1);
 });
 
-document.getElementById("btn-kiri").addEventListener("click", function() {
+document.getElementById("btn-kiri").addEventListener("click", function () {
     ubahArah(-1, 0);
 });
 
-document.getElementById("btn-kanan").addEventListener("click", function() {
+document.getElementById("btn-kanan").addEventListener("click", function () {
     ubahArah(1, 0);
 });
 
 // Kontrol keyboard (panah / WASD), Spasi ato Enter buat main lagi
-document.addEventListener("keydown", function(e) {
+document.addEventListener("keydown", function (e) {
     if (e.key === "ArrowUp" || e.key === "w") ubahArah(0, -1);
     else if (e.key === "ArrowDown" || e.key === "s") ubahArah(0, 1);
     else if (e.key === "ArrowLeft" || e.key === "a") ubahArah(-1, 0);
@@ -68,12 +68,12 @@ document.addEventListener("keydown", function(e) {
     e.preventDefault();
 });
 
-document.getElementById("btn-restart").addEventListener("click", function() {
+document.getElementById("btn-restart").addEventListener("click", function () {
     mulaiLagi();
 });
 
 function mulaiLagi() {
-    snake = new Snake(5,5);
+    snake = new Snake(5, 5);
     apple.spawnApple(snake);
     dx = 1;
     dy = 0;
@@ -85,7 +85,7 @@ function mulaiLagi() {
 
 // Gambar semua (background, apel, snake) sama tulis skor
 function gambarSemua() {
-    lib.background({r : 255, g : 255, b : 255});
+    lib.background({ r: 255, g: 255, b: 255 });
     if (status !== "menang") apple.drawApple(lib, ukuranKotak);
     // (dx, dy) is used to determine the direction of the snake's head for drawing the eyes correctly
     snake.drawSnake(lib, ukuranKotak, dx, dy);
